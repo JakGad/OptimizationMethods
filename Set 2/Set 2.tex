@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{fancyvrb} % size font inside verbatim environment
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{siunitx}
+\usepackage{blkarray} % show matrices with letters at borders
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{titling} % drop vertical space before the title
+\sethlcolor{lightgray}
+\setlength{\columnsep}{1cm}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\setlength\parindent{0pt} %% Do not touch this
+
+%% -----------------------------
+%% TITLE
+%% -----------------------------
+\title{Problem Set 2} %% Assignment Title
+
+\author{Jakub Gadawski\\ %% Student name
+Optimization methods
+}
+
+\date{\today} %% Change "\today" by another date manually
+%% -----------------------------
+%% -----------------------------
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\setlength{\droptitle}{-5em}    
+%% %%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+% --------------------------
+% Start here
+% --------------------------
+
+% %%%%%%%%%%%%%%%%%%%
+\section*{Exercise 1}
+% %%%%%%%%%%%%%%%%%%%
+{\bfseries Check, if:}
+
+% %%%%%%%%%%%%%%%%%%%
+\subsection*{a) \( \forall_{i \in I} Z_i - convex \, set \implies \bigcap_{i \in I} Z_i - convex\,set\)}
+\begin{proof}
+$ $\newline
+Let \(a,b \in \bigcap_{i \in I} Z_i\)\\
+We have to check, if \(\forall_{\lambda \in [0,1]} \lambda a + (1-\lambda)b \in \bigcap_{i \in I} Z_i\)\\
+But \( \forall_{i \in I} a, b \in Z_i\) and \(Z_i - convex\)\\
+Which means \(\forall_{i \in I} \forall_{\lambda \in [0,1]} \lambda a + (1-\lambda)b \in Z_i\)\\
+Which implies \(\forall_{\lambda \in [0,1]} \lambda a + (1-\lambda)b \in \bigcap_{i \in I} Z_i\)
+\end{proof}
+
+
+\subsection*{b) \( Z - convex\,set \implies conv(Z) = Z \)}
+\begin{proof}
+$ $\newline
+Suppose, that \( Z - convex\,set \land conv(Z) \neq Z \)\\
+From definition of convex hull \(Z \subset conv(Z)\), so the only possibility to \(conv(Z) \neq Z\) is \(conv(Z) \nsubseteq Z\)\\
+From that \(\exists_{a,b \in Z}\exists_{\lambda\in [0,1]}: \lambda a + (1-\lambda)b \in conv(Z) \land \lambda a + (1-\lambda)b \notin Z \)\\
+But that implies, that \(Z - not\,convex\,set\), which goes against the assumption.
+\end{proof}
+
+\subsection*{c) \( Z_1, Z_2 - convex\,sets \implies Z_1+Z_2-convex\,set\)}
+\begin{proof}
+$ $\newline
+Let \(x, y\in Z_1+Z_2\), that means \(\exists_{\substack{x_1, y_1 \in Z_1\\x_2,y_2 \in Z_2}}\quad x=x_1+x_2,\,y=y_1+y_2\) \\
+We have to check, if \(\forall_{\lambda \in [0,1]} \lambda x+(1-\lambda)y \in Z_1+Z_2\)\\
+Let's establish a specific \(\lambda \in [0,1]\)\\
+Consider points: 
+\begin{center}
+\(\lambda x_1+(1-\lambda) y_1\ \in Z_1\) (because \(Z_1 - convex\,set\))\\ 
+\(\lambda x_2+(1-\lambda)y_2 \in Z_2\) (because \(Z_2 - convex\,set\))
+\end{center}
+Sum of that points: \(\lambda x_1+(1-\lambda) y_1 + \lambda x_2+(1-\lambda)y_2\)\\
+is producing \(\lambda (x_1+x_2)+(1-\lambda)(y_1+y_2)\),\\
+and that's \(\lambda x+(1-\lambda)y\)
+\end{proof}
+\newpage
+\subsection*{d) \(Z_1 \subset \R^n, Z_2 \subset \R^m - convex\,sets \implies Z_1 \times Z_2 - convex\,set\,in\, \R^n \times \R^m\)}
+
+\begin{proof}
+$ $\newline
+Let \(x, y \in Z_1 \times Z_2,\\
+x=(\overbrace{ a_1^1, a_2^1, \ldots, a_n^1}^{a_1}, \overbrace{ b_1^1, b_2^1, \ldots, b_m^1}^{b_1}),\,
+y=(\overbrace{ a_1^2, a_2^2, \ldots, a_n^2}^{a_2}, \overbrace{ b_1^2, b_2^2, \ldots, b_m^2}^{b_2})\\
+a_1,a_2 \in Z_1,\, b_1, b_2 \in Z_2 \)\\
+We have to check, if \(\forall_{\lambda \in [0,1]} \lambda x+(1-\lambda)y \in Z_1 \times Z_2\)\\
+We can rewrite it as \( \forall_{\lambda \in [0,1]}\\ (\lambda a^1_1+(1-\lambda)a^2_1, \lambda a^1_2+(1-\lambda)a^2_2, \ldots, \lambda a^1_n+(1-\lambda)a^2_n, \lambda b^1_1+(1-\lambda)b^2_1, \lambda b^1_2+(1-\lambda)b^2_2, \ldots, \lambda b^1_m+(1-\lambda)b^2_m ) \) \\
+Let's establish a specific \(\lambda \in [0,1]\)\\
+Consider points: 
+\begin{center}
+\(\lambda a_1+(1-\lambda) a_2 \in Z_1\) (because \(Z_1 - convex\,set\))\\ 
+\(\lambda b_1+(1-\lambda)b_2 \in Z_2\) (because \(Z_2 - convex\,set\))
+\end{center}
+In Cartesian product \(Z_1 \times Z_2\) those points will give us:\\
+\((\lambda a^1_1+(1-\lambda)a^2_1, \lambda a^1_2+(1-\lambda)a^2_2, \ldots, \lambda a^1_n+(1-\lambda)a^2_n, \lambda b^1_1+(1-\lambda)b^2_1, \lambda b^1_2+(1-\lambda)b^2_2, \ldots, \lambda b^1_m+(1-\lambda)b^2_m ) \)\\
+and that's \(\lambda x+(1-\lambda)y \in Z_1 \times Z_2\)
+\end{proof}
+
+\subsection*{e) \( Z - convex\,set \implies \forall_{\alpha \in \R} \alpha Z - convex\,set\)}
+\begin{proof}
+$ $\newline
+Let's establish specific \(\alpha \in \R\)\\
+Let \(x, y \in \alpha Z\)\\
+We have to check, if \(\forall_{\lambda \in [0,1]} \lambda x+(1-\lambda)y \in \alpha Z \)\\
+If \(x,y \in \alpha Z\), then \(\exists_{x_1, y_1 \in Z} x=\alpha x_1,\quad y=\alpha y_1\)\\
+Let's establish a specific \(\lambda \in [0,1]\)\\
+And consider point \(\lambda x+(1-\lambda)y\), equals \(\lambda \alpha x_1+(1-\lambda)\alpha y_1\)\\
+Let's transform to \(\alpha(\lambda  x_1+(1-\lambda) y_1)\)\\
+Point \(\lambda  x_1+(1-\lambda) y_1 \in Z\) 
+\end{proof}
+\newpage
+\section*{Exercise 2}
+% %%%%%%%%%%%%%%%%%%%
+{\bfseries Check, if sets are convex:}
+\subsection*{a) \(H=\{x \in \R^n : <x,a> = \gamma \}, \quad a \in \R^n, \gamma \in \R\) }
+Set H is the convex set
+\begin{proof}
+$ $\newline
+Let \(x, y \in H\)\\
+We have to consider, if \(\forall_{\lambda \in [0,1]} \lambda x+(1-\lambda)y \in H\), or equivalently \( \forall_{\lambda \in [0,1]} <\lambda x+(1-\lambda)y, a>=\gamma\)\\
+\( <\lambda x+(1-\lambda)y, a>=<\lambda x, a>+<(1-\lambda)y, a>=\lambda<x, a>+(1-\lambda)<y, a> \)\\
+But we know (definition \(x, y\)), that \( <x, a> =\gamma,\quad <x, a> =\gamma\)\\
+Finally, we have \(\lambda\gamma+(1-\lambda)\gamma=\gamma \implies \lambda x+(1-\lambda)y \in H \)
+\end{proof}
+\subsection*{b) \(\R^n, \R^n_+\)}
+Sets \(\R^n\) and \(\R^n_+\) are convex
+\begin{proof}
+$ $\newline
+Let \(x, y \in \R^n,\quad x=(x_1, x_2, \ldots, x_n),\quad y=(y_1, y_2, \ldots, y_n), \quad \forall_{i \in \{1, \ldots, n \}}x_i, y_i \in \R\)\\
+Let's establish a specific \(\lambda\)\\
+Then, \( \lambda x+(1-\lambda)y = (\overbrace{\lambda x_1+(1-\lambda)y_1}^{\R},\overbrace{\lambda x_2+(1-\lambda)y_2}^{\R}, \ldots, \overbrace{\lambda x_n+(1-\lambda)y_n}^{\R}) \in \R^n\)\\
+$ $\newline
+Let \(x, y \in \R^n_+,\quad x=(x_1, x_2, \ldots, x_n),\quad y=(y_1, y_2, \ldots, y_n), \quad \forall_{i \in \{1, \ldots, n \}}x_i, y_i \in \R_+\)\\
+Let's establish a specific \(\lambda \in [0,1]\)\\
+Then, \( \lambda x+(1-\lambda)y = (\overbrace{\lambda x_1+(1-\lambda)y_1}^{\R_+},\overbrace{\lambda x_2+(1-\lambda)y_2}^{\R_+}, \ldots, \overbrace{\lambda x_n+(1-\lambda)y_n}^{\R_+}) \in \R^n_+\)\\
+\end{proof}
+\subsection*{c) Open/closed ball, sphere}
+Open/closed ball is a convex set, sphere is not
+\begin{proof}
+$ $\newline
+We can assume, that center of sphere/ball is \((0,0,0)\) and radius is equal \(r\) (We'll call it \(B\))\\
+Let \(x=(x_1, x_2, x_3),\quad y=(y_1, y_2, y_3),\quad x_1^2+x_2^2+x_3^2\leq r^2,\quad y_1^2+y_2^2+y_3^2\leq r^2\)\\
+Let's establish a specific \(\lambda \in [0,1]\)\\
+Then \(\lambda x+(1-\lambda)y=(\lambda x_1+(1-\lambda)y_1, \lambda x_2+(1-\lambda)y_2, \lambda x_3+(1-\lambda)y_3)\)\\
+We want to prove, that \( (\lambda x_1+(1-\lambda)y_1)^2+ (\lambda x_2+(1-\lambda)y_2)^2+ (\lambda x_3+(1-\lambda)y_3)^2\leq r^2 \)\\
+Let's transform left side of inequality to:\\ \( \lambda^2(\overbrace{x_1^2+x^2_2+x_3^2}^{\leq r^2})+2\lambda(1-\lambda)(\overbrace{x_1 y_1+x_2 y_2+x_3 y_3}^{We'll\,prove, \,that\,\leq r^2})+(1-\lambda)^2(\overbrace{y_1^2+y^2_2+y_3^2}^{\leq r^2})\leq \\ \leq r^2 (\lambda^2+2\lambda(1-\lambda)+(1-\lambda)^2) =r^2(\lambda+(1-\lambda))^2=r^2\)\\
+So, if only \(x_1 y_1+x_2 y_2+x_3 y_3\leq r^2,\,\lambda x+(1-\lambda)y \in B\)\\
+But, we can easily see, that:\\ \(x_1 y_1+x_2 y_2+x_3 y_3=<x, y>=\overbrace{|x|}^{\leq r}\overbrace{|y|}^{\leq r}\overbrace{\cos{\alpha}}^{\leq 1}\leq r^2 \quad\,\alpha \in [0,\pi]\)\\
+$ $\newline
+We can apply the same reasoning to open ball\\
+$ $\newline
+To sphere, let's take sphere with center in \((0,0,0)\) and radius 1. We can take segment \( S=((1, 0, 0), (-1, 0, 0))\). Then \((0,0,0) \in S\), but \((0,0,0)\) is not in sphere.
+\end{proof}
+\subsection*{d) \( E=\{ (x_1, x_2):3x_1^2+x_2^2 \geq 6 \}\)}
+E is not a convex set
+\begin{proof}
+$ $\newline
+Let's take points \(A=(-4,0), \, B=(4,0)\) and segment \(AB\)\\
+We can easily see, that \((0,0) \in AB\) and \( A, B \in E\), but \( (0,0)\notin E\)
+\end{proof}
+
+\end{document}
