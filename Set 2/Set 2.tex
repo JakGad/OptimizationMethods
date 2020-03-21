@@ -187,6 +187,15 @@ Z is not a convex set
     Let's take points \(A=(0,0), \, B=(3, 3)\) and segment \(AB\)\\
     We can easily see, that \((2,2) \in AB\) and \( A, B \in Z\), but \( (2,2)\notin Z\)
 \end{proof}
-
-
+\section*{Exercise 3}
+{\bfseries Find convex hull of sets:}
+\subsection*{a) \( Z=\{x, y\}, x \neq y, x,y \in \R^n\)}
+For only two points, we have to take all points in segment \(xy\)\\
+Then \(conv(Z) = \{ a:a=\lambda x + (1-\lambda)y, \lambda \in [0,1]\}\)
+\subsection*{b) \( Z=\{x, y, z\}, x,y,z \in \R^n\, x, y, z - linearly\,intependent\)}
+For three points, we have to take all points beetwen segments \(xy, yz, xz\)\\
+Then \(conv(Z) = \{ a: a \in \bigtriangleup(xyz) \}\)
+\subsection*{c) \( Z=\{(x_1, x_2) \in [0,1] \times [0,1]: x_1(x_1 - 1)=0 \land x_2(x_2 - 1)=0 \}\)}
+We can consider set \(Z\) as set of four segments: \\ \( ((0,0), (0,1)), ((0,1), (1,1)), ((1,1), (1,0)), ((1,0), (0,0)) \)\\
+Then \( conv(Z)= \{(x_1, x_2) \in [0,1] \times [0,1]: x_1(x_1 - 1) \leq 0 \land x_2(x_2 - 1) \leq 0 \}\)
 \end{document}
