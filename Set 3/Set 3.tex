@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{fancyvrb} 
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{siunitx}
+\usepackage{blkarray} 
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{titling}
+\sethlcolor{lightgray}
+\setlength{\columnsep}{1cm}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\setlength\parindent{0pt} 
+
+\title{Problem Set 3} 
+
+\author{Jakub Gadawski\\ 
+Optimization methods
+}
+
+\date{\today}
+\begin{document}
+\setlength{\droptitle}{-5em}
+\maketitle
+
+\section*{Exercise 1}
+{\bfseries Check, if set is a cone:}
+\subsection*{a) \(A=\{x \in \R^n : x_i \geq 0\} \)}
+The set is a cone.
+\begin{proof}
+    We have to check, if \(\forall_{x\in A}\forall_{\alpha \in \R, \alpha \geq 0} \alpha x \in A\)\\
+    Let \(x\in A, x=(x_1, x_2, \ldots, x_n), \alpha \in \R, \alpha \geq 0\)\\
+    Then, \( \alpha x = (\overbrace{\alpha x_1}^{R_+}, \overbrace{\alpha x_2}^{R_+}, \ldots, \overbrace{\alpha x_n}^{R_+}) \in A \)
+\end{proof}
+\subsection*{c) \( C=\{ x \in \R^n:<x, a> \leq 0\}, a\in \R^n\)}
+The set is a cone.
+\begin{proof}
+    Let \( x \in C, \alpha \in \R, \alpha \geq 0\)\\
+    Then \( <\alpha x, a>=\alpha <x, a> \leq 0 \implies \alpha x \in C \)
+\end{proof}
+\subsection*{d) \(D=(a):=\{x \in \R^n : x=\alpha a, \alpha \geq 0\}, a \in \R^n\) }
+The set is a cone. 
+\begin{proof}
+    Let \( x \in D, \alpha \in \R, \alpha \geq 0 \)\\
+    Then \(\alpha x \in D\) (definition of D)
+\end{proof}
+\subsection*{e) \(E=\{x \in \R^n : x=\alpha a, \alpha > 0\}, a \in \R^n\) }
+The set is a cone for \(a=0\).\\
+If \(\alpha = 0 \land a \ne 0 \implies \alpha x \notin E \implies E\,\)- not a cone.
+\subsection*{f) \(F=\{x \in \R^2 : x_1=2\}\) }
+The set is a cone.\\
+If \(\alpha = 2 \land x = (2,4) \implies \alpha x=(4, 8) \notin F\implies F\,\)- not a cone.
+
+\end{document}
