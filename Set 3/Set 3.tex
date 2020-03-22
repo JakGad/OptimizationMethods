@@ -49,7 +49,7 @@ The set is a cone.
     Then \( <\alpha x, a>=\alpha <x, a> \leq 0 \implies \alpha x \in C \)
 \end{proof}
 \subsection*{d) \(D=(a):=\{x \in \R^n : x=\alpha a, \alpha \geq 0\}, a \in \R^n\) }
-The set is a cone. 
+The set is a cone.
 \begin{proof}
     Let \( x \in D, \alpha \in \R, \alpha \geq 0 \)\\
     Then \(\alpha x \in D\) (definition of D)
@@ -60,5 +60,48 @@ If \(\alpha = 0 \land a \ne 0 \implies \alpha x \notin E \implies E\,\)- not a c
 \subsection*{f) \(F=\{x \in \R^2 : x_1=2\}\) }
 The set is a cone.\\
 If \(\alpha = 2 \land x = (2,4) \implies \alpha x=(4, 8) \notin F\implies F\,\)- not a cone.
-
+\section*{Exercise 2}
+{\bfseries Prove, that:}
+\subsection*{a) \( C_1, C_2 - cones \implies C_1 \cap C_2 - cone\)}
+\begin{proof}
+    Let \( x \in C_1 \cap C_2\)\\
+    Then \( x \in C_1 \land x \in C_2 \) \\
+    But \( C_1, C_2 - cones \implies \forall_{\alpha \geq 0} (x \alpha \in C_1 \land x \alpha \in C_2) \implies \\ \implies \forall_{\alpha \geq 0} x\alpha \in C_1 \cap C_2 \implies C_1 \cap C_2 - cone\) 
+\end{proof}
+If sets are convex, then intersection is a convex set.
+\subsection*{b) \(S_1, S_2 - cones \implies S_1 \cup S_2 - cone\) }
+\begin{proof}
+    Let \( x \in S_1 \cup S_2\)\\
+    Then \( x \in S_1 \lor x \in S_2 \)\\
+    If \( x \in S_1 \implies \forall_{\alpha \geq 0} \alpha x \in S_1 \implies S_1 \cup S_2\)\\
+    If \( x \in S_2 \implies \forall_{\alpha \geq 0} \alpha x \in S_2 \implies S_1 \cup S_2\)\\
+    So \( S_1 \cup S_2 - cone\)
+\end{proof}
+Let \( S_1 = \{x: \alpha[1,1], \alpha \geq 0\}, S_2 = \{x: \alpha[-1,1], \alpha \geq 0\} \)\\
+Then \( S_1, S_2\) - convex cones, but point \((0, 1)\) is in segment \( ((-1, 1), (1,1)) \) and \( (0,1) \notin S_1 \cup S_2 \implies S_1 \cup S_2 - not convex set \)
+\subsection*{c) \( S_1, S_2 -cones \implies S_1+S_2 -cone\)}
+\begin{proof}
+Let \(x \in S_1 +S_2, x=x_1+x_2, x_1 \in S_1, x_2 \in S_2\)\\
+Then \( \forall_{\alpha \geq 0} \alpha x_1 \in S_1, \alpha x_2 \in S_2  \)\\
+And \( \forall_{\alpha \geq 0} \alpha x_1+\alpha x_2 \iff \forall_{\alpha \geq 0} \alpha x\)\\
+And all x could be presented as \( x_1+x_2, x_1 \in S_1, x_2 \in S_2\)
+\end{proof}
+For all convex sets \(S_1, S_2, S_1+S_2 -convex\)
+\subsection*{d) \( S - cone \implies -S - cone\)}
+\begin{proof}
+    Let \(x \in -S\)\\
+    Then \( \forall_{\alpha \geq 0} \alpha(-x)=-\alpha x, \alpha x \in S \implies -S -cone\)
+\end{proof}
+\subsection*{e) \( S \subset \R^n - cone, f:\R^n \mapsto \R^m -linear  \implies f(S)- cone\)}
+\begin{proof}
+    Let \(x \in f(S), \alpha \geq 0, x=f(x_1), x_1 \in S\)\\
+    Because any linear tramsformation could be represented as a matrix  \(f=A, A \in M_{m \times n}\)\\
+    Then \(\alpha x=\alpha f(x_1)=\alpha A x_1 =A \alpha x_1= f(\alpha x_1)\)\\
+    and \(\alpha x \in S\), because \(S - cone \implies f(S)-cone\)
+\end{proof}
+%\subsection*{f) \( F=\{ y \in \R^m : y=Ax, x \geq0, x \in \R^n\} - convex\,cone\)}
+%\begin{proof}
+%    Set \({ x \in \R^n: x \geq0\}\) is a cone, and matrix A is a linear transformation, so F is a cone.\\
+    
+%\end{proof}
 \end{document}
