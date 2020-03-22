@@ -104,4 +104,23 @@ For all convex sets \(S_1, S_2, S_1+S_2 -convex\)
 %    Set \({ x \in \R^n: x \geq0\}\) is a cone, and matrix A is a linear transformation, so F is a cone.\\
     
 %\end{proof}
+\section*{Exercise 3}
+{\bfseries Give geometric interpretation of cone and conjugated cone:}
+\subsection*{c) \(D=([2,-1, 6]^T)\)}
+It's half line set down by \([2, -1.6]\), conjugated cone is \(D^*=\{(x, y, z):2x-y+6z \leq 0\}\)
+\subsection*{d) \(E=\{x \in \R^3: x_i\geq 0 \}\)}
+Conjugated cone to E is \( E^*=\{x \in \R^3: x_i\leq 0 \} \)
+\subsection*{e) \(F=\{x \in \R^2: \begin{bmatrix}1&2\\2&-1\end{bmatrix} x\geq 0 \}\)}
+\begin{math}
+    \begin{bmatrix}
+    1&2\\2&-1
+    \end{bmatrix} 
+    \begin{bmatrix} 
+    x \\ y 
+    \end{bmatrix} \geq 0\\
+    y\geq \frac{-x}{2} \land y \leq 2x\\$ $\\
+    F=\{x \in \R^2: x_1 \in R \land  \frac{-x_1}{2} \leq x_2 \leq 2x_1  \}\\
+    F^*=\{x \in \R^2: x_1 \in R \land  \frac{-x_1}{2} \geq x_2 \geq 2x_1  \}
+\end{math}
+
 \end{document}
