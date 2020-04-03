@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{fancyvrb} 
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{siunitx}
+\usepackage{blkarray} 
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{titling}
+\sethlcolor{lightgray}
+\setlength{\columnsep}{1cm}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\setlength\parindent{0pt} 
+
+\title{Problem Set 4} 
+
+\author{Jakub Gadawski\\ 
+Optimization methods
+}
+
+\date{\today}
+\begin{document}
+\setlength{\droptitle}{-5em}
+\maketitle
+
+\section*{Exercise 1}
+{\bfseries Let \(f:X\rightarrow\R, X\in \R^n -convex \) Prove, that:}
+\subsection*{a) \( f- convex \iff epi f -convex\)}
+\begin{proof}
+    "\(\implies\)"\\
+    Let \( f - convex \land epi f- not\,convex \implies \\ \exists_{(x, z_1), (y, z_2) \in epi f} \exists_{\lambda \in [0,1]} \lambda x+(1-\lambda) y \notin X \lor f(\lambda x +(1- \lambda)y) > \lambda z_1 + (1-\lambda) x_2\)\\
+    \( X -convex \implies \lambda x+(1-\lambda) y \in X\)\\
+    We have to consider, if \( f(\lambda x +(1- \lambda)y) > \lambda z_1 + (1-\lambda) z_2  \) is possible.\\
+    \( f- convex \implies \lambda f(x) + (1-\lambda) f(y) \geq f(\lambda x +(1- \lambda)y) \)\\
+    On the other hand, from definition of \(z_1, z_2, \lambda z_1 + (1-\lambda) z_2 \geq \lambda f(x) + (1-\lambda) f(y)\) \\
+    So, from the first inequality \(\lambda f(x) + (1-\lambda) f(y)>\lambda f(x) + (1-\lambda) f(y) \)\\
+    Which is impossible.\\ \\
+    "\(\impliedby\)"\\
+    We know, that \( epi f - convex \iff  \\ \forall_{(x,z_1), (y, z_2) \in epi f} \forall_{\lambda \in [0,1]} \lambda x + (1- \lambda) y \in X \land f(\lambda x + (1- \lambda) y)\leq \lambda z_1 + (1- \lambda) z_2 \implies f- convex\) \\
+    Especially for \(z_1 = f(x), z_2=f(y)\)\\
+    \( f(\lambda x + (1- \lambda) y)\leq \lambda f(x) + (1- \lambda) f(y) \)
+\end{proof}
+\subsection*{b) \( f- convex \implies \forall_{\alpha \in \R} Z_\alpha(f) -convex\)}
+\begin{proof}
+    Let \(f-convex \land \exists_{\alpha \in \R} Z_\alpha(f) - not\,convex \implies \exists_{\lambda \in [0,1]} \exists_{x, y \in Z_\alpha(f)}  f( \lambda x +(1-\lambda)y) > \alpha\)\\
+    But, \( f- convex \implies f(\lambda x +(1-\lambda)y) \leq \lambda f(x)+(1-\lambda)f(y)\)\\
+    Which means, that \(\lambda f(x)+(1-\lambda)f(y)<\lambda \implies x \notin Z_\alpha (f) \lor y \notin Z_\alpha (f)\)\\
+    Which is impossible.
+\end{proof}
+Left handed implication is impossible.
+Let \( \alpha = 2 \land f(x)=sin(x) \)\\
+Then \( Z_2 (sin(x)) = \R - convex\), but \( sin(x) - not\,convex\)
+\subsection*{c) \( f- quasiconvex \iff \forall_{\alpha \in \R} Z_\alpha(f) -convex\)}
+\begin{proof}
+    
+\end{proof}
+\end{document}
